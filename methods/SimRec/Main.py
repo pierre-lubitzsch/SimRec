@@ -9,6 +9,7 @@ import pickle
 from Utils.Utils import *
 import os
 import setproctitle
+import torch
 
 class Coach:
 	def __init__(self, handler):
@@ -154,6 +155,11 @@ if __name__ == '__main__':
 	os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
 	logger.saveDefault = True
 	
+	if torch.cuda.is_available():
+		torch.cuda.init()
+	else:
+		print("why is cuda not available???")
+		exit(0)
 	log('Start')
 	handler = DataHandler()
 	handler.LoadData()

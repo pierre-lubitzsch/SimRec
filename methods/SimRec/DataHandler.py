@@ -22,6 +22,10 @@ class DataHandler:
 			predir = '../../Datasets/sparse_amazon/'
 			if args.teacher_model is None:
 				args.teacher_model = 'lightgcn_amazon'
+		elif args.data == 'goodreads':
+			predir = '../../Datasets/sparse_goodreads/'
+			if args.teacher_model is None:
+				args.teacher_model = 'lightgcn_goodreads'
 		self.predir = predir
 		self.trnfile = predir + 'trnMat.pkl'
 		self.tstfile = predir + 'tstMat.pkl'
