@@ -1,6 +1,7 @@
 import torch as t
 import Utils.TimeLogger as logger
 from Utils.TimeLogger import log
+from Utils.Utils import set_seed
 from Params import args
 from Model import Model
 from DataHandler import DataHandler
@@ -154,7 +155,9 @@ class Coach:
 if __name__ == '__main__':
 	os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
 	logger.saveDefault = True
-	
+	if args.seed is not None:
+		set_seed(args.seed)
+
 	if torch.cuda.is_available():
 		torch.cuda.init()
 	else:

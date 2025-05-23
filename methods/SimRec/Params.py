@@ -24,5 +24,6 @@ def ParseArgs():
 	parser.add_argument('--data', default='yelp', type=str, help='name of dataset')
 	parser.add_argument('--tstEpoch', default=3, type=int, help='number of epoch to test while training')
 	parser.add_argument('--gpu', default='0', type=str, help='indicates which gpu to use')
+	parser.add_argument('--seed', default=None, type=int, help='random seed')
 	return parser.parse_args()
 args = ParseArgs()
