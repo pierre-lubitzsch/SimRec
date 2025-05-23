@@ -1,5 +1,6 @@
 import torch as t
 import torch.nn.functional as F
+import numpy as np
 
 def innerProduct(usrEmbeds, itmEmbeds):
 	return t.sum(usrEmbeds * itmEmbeds, dim=-1)
@@ -34,3 +35,13 @@ def KLDiverge(tpreds, spreds, distillTemp):
 
 def pointKLDiverge(tpreds, spreds):
 	return -(tpreds * spreds.log()).mean()
+
+def set_seed(seed: int):
+	np.random.seed(seed)
+	t.manual_seed(seed)
+	t.cuda.manual_seed(seed)
+	t.cuda.manual_seed_all(seed)
+
+	# Ensure deterministic behavior
+	t.backends.cudnn.deterministic = True
+	t.backends.cudnn.benchmark = False
