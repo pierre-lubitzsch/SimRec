@@ -160,9 +160,7 @@ if __name__ == '__main__':
 
 	if torch.cuda.is_available():
 		torch.cuda.init()
-	else:
-		print("why is cuda not available???")
-		exit(0)
+
 	log('Start')
 	handler = DataHandler()
 	handler.LoadData()
